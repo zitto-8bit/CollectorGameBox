@@ -15,6 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
 
 	private static final String[] ORIGINS = {
 			"http://localhost:4200",
+			"https://collectorgamebox.netlify.app",
 			"http://26.248.54.3:4200",
 			"http://192.168.15.25:4200",
 			"https://hoppscotch.io"
