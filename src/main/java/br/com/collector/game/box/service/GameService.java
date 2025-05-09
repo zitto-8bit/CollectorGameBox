@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import br.com.collector.game.box.dto.CategoryDTO;
@@ -45,6 +46,7 @@ public class GameService {
 	@Autowired
     private Base64Utils base64Util;
 	
+	@Cacheable(value = "buscarTodos", keyGenerator = "customKeyGenerator")
 	public List<GameDTO> carregarTodos() {
 		List<GameDTO> games = new ArrayList<>();
 		
@@ -65,6 +67,7 @@ public class GameService {
 		return games;
 	}
 	
+	@Cacheable(value = "buscarTodosLogado", keyGenerator = "customKeyGenerator")
 	public List<GameDTO> carregarTodosUsuarioLogado(UsuarioDTO usuarioDto) {
 		Usuario usuario = usuarioRepository.findByUserEmail(usuarioDto.getEmail()).get();
 		
@@ -83,7 +86,7 @@ public class GameService {
 		return games;
 	}
 	
-	@CacheEvict("buscarTodos")
+	@CacheEvict(cacheNames = {"buscarTodos", "buscarTodosLogado"}, allEntries = true)
 	public void salvarJogo(GameDTO gameDto) {
 		JogoUsuarioDTO jogoUsuario = gameDto.getJogoUsuario();
 		Game game = gameRepository.findById(gameDto.getId().longValue()).get();
