@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 import br.com.collector.game.box.dto.CategoryDTO;
@@ -82,6 +83,7 @@ public class GameService {
 		return games;
 	}
 	
+	@CacheEvict("buscarTodos")
 	public void salvarJogo(GameDTO gameDto) {
 		JogoUsuarioDTO jogoUsuario = gameDto.getJogoUsuario();
 		Game game = gameRepository.findById(gameDto.getId().longValue()).get();
@@ -113,6 +115,7 @@ public class GameService {
 		usuarioGameRepository.save(usuarioGame);
 	}
 	
+	@CacheEvict("buscarTodos")
 	public void aprovarJogo(Long id) {
 		Game game = gameRepository.findById(id).get();
 		
