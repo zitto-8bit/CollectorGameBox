@@ -68,8 +68,8 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
         // Remove o contexto da URI, deixando só /h2-console
         String path = requestURI.substring(contextPath.length());
         
-        return Arrays.stream(SecurityConfig.ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED)
-                .noneMatch(path::startsWith);
+        return Arrays.stream(SecurityConfig.ENDPOINTS_WITH_AUTHENTICATION_REQUIRED)
+                .anyMatch(path::startsWith);
     }
 
 }

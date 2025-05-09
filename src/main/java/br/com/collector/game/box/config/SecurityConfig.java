@@ -31,15 +31,15 @@ public class SecurityConfig {
 		    "/h2-console/**",
 		    "/game/buscarUsuariosJogo",
 		    "/game/buscarJogosDoUsuario/*",
-		    "/categoria/buscarTodas"
+		    "/categoria/buscarTodas",
+		    "/game/aprovarJogo/*"
 		};
 	
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
             "/usuario/atualizar",
     		"/game/salvarJogo",
     		"/game/sugerirJogo",
-    		"/game/buscarNaoAtivos",
-    		"/game/aprovarJogo/*"
+    		"/game/buscarNaoAtivos"
     };
 	
 	@Bean
