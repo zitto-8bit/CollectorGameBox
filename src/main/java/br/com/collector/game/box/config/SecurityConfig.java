@@ -32,7 +32,9 @@ public class SecurityConfig {
 		    "/game/buscarUsuariosJogo",
 		    "/game/buscarJogosDoUsuario/*",
 		    "/categoria/buscarTodas",
-		    "/game/aprovarJogo/*"
+		    "/game/aprovarJogo/*",
+		    "/actuator",
+		    "/actuator/**"
 		};
 	
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
