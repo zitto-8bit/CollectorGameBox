@@ -33,6 +33,7 @@ public class SecurityConfig {
 		    "/game/buscarJogosDoUsuario/*",
 		    "/categoria/buscarTodas",
 		    "/game/aprovarJogo/*",
+		    "/game/reprovarJogo/*",
 		    "/actuator",
 		    "/actuator/**"
 		};
