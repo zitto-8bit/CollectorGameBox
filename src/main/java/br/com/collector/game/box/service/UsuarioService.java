@@ -64,6 +64,7 @@ public class UsuarioService {
 				.biografia(userAuthenticated.getUsuario().getUserBio())
 				.icone(base64Util.encodeImg(userAuthenticated.getUsuario().getUserIcon()))
 				.token(jwtService.generateToken(userAuthenticated))
+				.acessibilidade(userAuthenticated.getUsuario().getUserAccessibility())
 				.acesso(userAuthenticated.getUsuario().getAcessos().get(0).getNome())
 				.build();
 	}
@@ -86,6 +87,7 @@ public class UsuarioService {
 			usuarioDto.setNome(usuarioAtualizado.getUserName());
 			usuarioDto.setIcone(base64Util.encodeImg(usuarioAtualizado.getUserIcon()));
 			usuarioDto.setBiografia(usuarioAtualizado.getUserBio());
+			usuarioDto.setAcessibilidade(usuarioAtualizado.getUserAccessibility());
 			
 			return usuarioDto;
 		} else {
@@ -131,6 +133,7 @@ public class UsuarioService {
 		String nome = usuarioDto.getNome();
 		String icone = usuarioDto.getIcone();
 		String bio = usuarioDto.getBiografia();
+		String acessibilidade = usuarioDto.getAcessibilidade();
 		
 		if(nome != null)
 			usuario.setUserName(nome);
@@ -138,6 +141,8 @@ public class UsuarioService {
 			usuario.setUserIcon(base64Util.decodeImg(icone));
 		if(bio != null)
 			usuario.setUserBio(bio);
+		if(acessibilidade != null)
+			usuario.setUserAccessibility(acessibilidade);
 		
 		return usuario;
 	}
