@@ -18,6 +18,7 @@ public class UsuarioDTO {
 	private String biografia;
 	private String icone;
 	private String token;
+	private String acessibilidade;
 	@Enumerated(EnumType.STRING)
     private RoleName acesso;
 	
