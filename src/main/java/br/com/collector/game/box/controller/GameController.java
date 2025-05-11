@@ -51,6 +51,12 @@ public class GameController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	@GetMapping("reprovarJogo/{idJogo}")
+	public ResponseEntity<Void> reprovarJogo(@PathVariable Long idJogo) {
+		gameService.reprovarJogo(idJogo);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
 	@PostMapping("buscarUsuariosJogo")
 	public ResponseEntity<List<JogoUsuarioDTO>> buscarUsuariosJogo(@RequestBody GameDTO gameDto) {
 		return new ResponseEntity<List<JogoUsuarioDTO>>(gameService.buscarUsuariosJogo(gameDto), HttpStatus.OK);

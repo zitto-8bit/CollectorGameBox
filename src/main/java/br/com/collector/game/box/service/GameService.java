@@ -118,13 +118,20 @@ public class GameService {
 		usuarioGameRepository.save(usuarioGame);
 	}
 	
-	@CacheEvict("buscarTodos")
+	@CacheEvict(cacheNames = {"buscarTodos", "buscarTodosLogado"}, allEntries = true)
 	public void aprovarJogo(Long id) {
 		Game game = gameRepository.findById(id).get();
 		
 		game.setTrue(true);
 		
 		gameRepository.save(game);
+	}
+	
+	@CacheEvict(cacheNames = {"buscarTodos", "buscarTodosLogado"}, allEntries = true)
+	public void reprovarJogo(Long id) {
+		Game game = gameRepository.findById(id).get();
+		
+		gameRepository.delete(game);
 	}
 	
 	public void sugerir(GameDTO gameDto) {
